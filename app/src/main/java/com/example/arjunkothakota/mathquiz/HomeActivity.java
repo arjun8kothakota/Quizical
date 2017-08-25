@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -25,6 +26,8 @@ public class HomeActivity extends AppCompatActivity {
 
     ImageView calculatorImageView, lessthanImageView, squareRootImageView, equalsImageView, piImageView, triangleImageView, sigmaImageView, ratioImageView, xImageView, sineImageView, tangentImageView, curveImageView;
 
+    ProgressBar beginnerBar;
+
     private BeginnerQuestions beginnerQuestions = new BeginnerQuestions();
     private IntermediateQuestions intermediateQuestions = new IntermediateQuestions();
     private AdvancedQuestions advancedQuestions = new AdvancedQuestions();
@@ -33,7 +36,6 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        TextView textView = (TextView) findViewById(R.id.textView);
         TextView textView2 = (TextView) findViewById(R.id.textView10);
         TextView textView3 = (TextView) findViewById(R.id.textView11);
 
@@ -67,12 +69,14 @@ public class HomeActivity extends AppCompatActivity {
         xImageView.setColorFilter(Color.parseColor("#ffffff"));
         curveImageView.setColorFilter(Color.parseColor("#ffffff"));
 
-        textView.setText(getIntent().getStringExtra("beginner highscore"));
         textView2.setText(getIntent().getStringExtra("intermediate highscore"));
         textView3.setText(getIntent().getStringExtra("advanced highscore"));
 
-
-
+        beginnerBar = (ProgressBar)findViewById(R.id.determinateBarBeginner);
+        SharedPreferences beginnerSharedPreferences = getSharedPreferences("Scores", MODE_PRIVATE);
+        int beginnerHighScore = beginnerSharedPreferences.getInt("beginner HighScore", 0);
+        Log.d("progress", beginnerHighScore/40d + " " + beginnerHighScore);
+        beginnerBar.setProgress((int) ((beginnerHighScore/40d)*100));
 
 
 
@@ -80,9 +84,6 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 loadQuizActivity(HomeActivity.MATH_BEGINNER);
-
-
-
             }
         });
 

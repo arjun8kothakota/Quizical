@@ -30,14 +30,12 @@ public class ScoreActivity extends AppCompatActivity {
         scoreTxt.setText("Your score : " + intermediateScore);
         scoreTxt.setText("Your score : " + advancedScore);
 
-        SharedPreferences beginnerSharedPreferences = getPreferences(MODE_PRIVATE);
-        final int beginnerHighScore = beginnerSharedPreferences.getInt("beginner HighScore", 0);
+        SharedPreferences sharedPreferences = getSharedPreferences("Scores", MODE_PRIVATE);
+        final int beginnerHighScore = sharedPreferences.getInt("beginner HighScore", 0);
 
-        SharedPreferences intermediateSharedPreferences = getPreferences(MODE_PRIVATE);
-        final int intermediateHighScore = intermediateSharedPreferences.getInt("intermediate HighScore", 0);
+        final int intermediateHighScore = sharedPreferences.getInt("intermediate HighScore", 0);
 
-        SharedPreferences advancedSharedPreferences = getPreferences(MODE_PRIVATE);
-        final int advancedHighScore = advancedSharedPreferences.getInt("advanced HighScore", 0);
+        final int advancedHighScore = sharedPreferences.getInt("advanced HighScore", 0);
 
         if (levelTitle.equalsIgnoreCase(HomeActivity.MATH_BEGINNER)){
 
@@ -47,7 +45,7 @@ public class ScoreActivity extends AppCompatActivity {
             }else {
                 highestScoreTxt.setText("New HighScore : " + beginnerScore + "!");
                 scoreTxt.setText("Your score : " + beginnerScore);
-                SharedPreferences.Editor editor = beginnerSharedPreferences.edit();
+                SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putInt("beginner HighScore", beginnerScore);
                 editor.commit();
             }
@@ -59,7 +57,7 @@ public class ScoreActivity extends AppCompatActivity {
             }else {
                 highestScoreTxt.setText("New HighScore : " + intermediateScore+ "!");
                 scoreTxt.setText("Your score : " + intermediateScore);
-                SharedPreferences.Editor editor = intermediateSharedPreferences.edit();
+                SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putInt("intermediate HighScore", intermediateScore);
                 editor.commit();
             }
@@ -71,7 +69,7 @@ public class ScoreActivity extends AppCompatActivity {
             }else {
                 highestScoreTxt.setText("New HighScore : " + advancedScore + "!");
                 scoreTxt.setText("Your score : " + advancedScore);
-                SharedPreferences.Editor editor = advancedSharedPreferences.edit();
+                SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putInt("advanced HighScore", advancedScore);
                 editor.commit();
             }
