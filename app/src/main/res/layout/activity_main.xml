@@ -37,18 +37,11 @@
 
             <ProgressBar
                 android:id="@+id/determinateBarBeginner"
-                style="@android:style/Widget.ProgressBar.Horizontal"
-                android:layout_width="wrap_content"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="175dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentTop="true"
-                android:layout_toEndOf="@+id/textView3"
-                android:indeterminate="false"
-                android:progress="50"
-                android:progressBackgroundTint="@android:color/darker_gray"
-                android:progressTint="#45ad70"
-                tools:layout_editor_absoluteX="320dp"
-                tools:layout_editor_absoluteY="16dp" />
+                android:layout_alignParentTop="true" />
 
             <TextView
                 android:id="@+id/textView2"
@@ -121,16 +114,6 @@
             android:contextClickable="true"
             android:paddingBottom="5dp">
 
-            <TextView
-                android:id="@+id/textView10"
-                android:layout_width="200dp"
-                android:layout_height="30dp"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentTop="true"
-                android:text="TextView"
-                android:textColor="#f2d15d"
-                android:textSize="20sp" />
-
             <ImageView
                 android:id="@+id/imageView5"
                 android:layout_width="wrap_content"
@@ -187,6 +170,14 @@
                 android:text="How Hard Could It Be?"
                 android:textColor="#000000"
                 android:textSize="18sp" />
+
+            <ProgressBar
+                android:id="@+id/determinateBarIntermediate"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="175dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -200,15 +191,13 @@
             android:contextClickable="true"
             android:paddingBottom="5dp">
 
-            <TextView
-                android:id="@+id/textView11"
-                android:layout_width="200dp"
-                android:layout_height="30dp"
+            <ProgressBar
+                android:id="@+id/determinateBarAdvanced"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="175dp"
+                android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentTop="true"
-                android:text="TextView"
-                android:textColor="#f2d15d"
-                android:textSize="20sp" />
+                android:layout_alignParentTop="true" />
 
             <ImageView
                 android:id="@+id/imageView9"

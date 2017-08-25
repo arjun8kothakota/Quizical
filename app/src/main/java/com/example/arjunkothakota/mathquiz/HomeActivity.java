@@ -26,7 +26,7 @@ public class HomeActivity extends AppCompatActivity {
 
     ImageView calculatorImageView, lessthanImageView, squareRootImageView, equalsImageView, piImageView, triangleImageView, sigmaImageView, ratioImageView, xImageView, sineImageView, tangentImageView, curveImageView;
 
-    ProgressBar beginnerBar;
+    ProgressBar beginnerBar, intermediateBar, advancedBar;
 
     private BeginnerQuestions beginnerQuestions = new BeginnerQuestions();
     private IntermediateQuestions intermediateQuestions = new IntermediateQuestions();
@@ -36,8 +36,6 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        TextView textView2 = (TextView) findViewById(R.id.textView10);
-        TextView textView3 = (TextView) findViewById(R.id.textView11);
 
         beginnerBtn = (RelativeLayout) findViewById(R.id.beginnerBtn);
         intermediateBtn = (RelativeLayout) findViewById(R.id.intermediateBtn);
@@ -69,14 +67,25 @@ public class HomeActivity extends AppCompatActivity {
         xImageView.setColorFilter(Color.parseColor("#ffffff"));
         curveImageView.setColorFilter(Color.parseColor("#ffffff"));
 
-        textView2.setText(getIntent().getStringExtra("intermediate highscore"));
-        textView3.setText(getIntent().getStringExtra("advanced highscore"));
-
         beginnerBar = (ProgressBar)findViewById(R.id.determinateBarBeginner);
         SharedPreferences beginnerSharedPreferences = getSharedPreferences("Scores", MODE_PRIVATE);
         int beginnerHighScore = beginnerSharedPreferences.getInt("beginner HighScore", 0);
         Log.d("progress", beginnerHighScore/40d + " " + beginnerHighScore);
         beginnerBar.setProgress((int) ((beginnerHighScore/40d)*100));
+
+        intermediateBar = (ProgressBar)findViewById(R.id.determinateBarIntermediate);
+        SharedPreferences intermediateSharedPreferences = getSharedPreferences("Scores", MODE_PRIVATE);
+        int intermediateHighScore = intermediateSharedPreferences.getInt("intermediate HighScore", 0);
+        Log.d("progress", intermediateHighScore/40d + " " + intermediateHighScore);
+        intermediateBar.setProgress((int) ((intermediateHighScore/40d)*100));
+
+        advancedBar = (ProgressBar)findViewById(R.id.determinateBarAdvanced);
+        SharedPreferences advancedSharedPreferences = getSharedPreferences("Scores", MODE_PRIVATE);
+        int advancedHighScore = advancedSharedPreferences.getInt("advanced HighScore", 0);
+        Log.d("progress", advancedHighScore/40d + " " + advancedHighScore);
+        advancedBar.setProgress((int) ((advancedHighScore/40d)*100));
+
+
 
 
 
@@ -91,8 +100,6 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 loadQuizActivity(HomeActivity.MATH_INTERMEDIATE);
-
-                Intent homeIntent = getIntent();
             }
         });
 
@@ -100,9 +107,6 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 loadQuizActivity(HomeActivity.MATH_ADVANCED);
-
-                Intent homeIntent = getIntent();
-
             }
         });
 
