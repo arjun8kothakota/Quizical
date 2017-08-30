@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Math Quiz</string>
+    <string name="app_name">Quizical</string>
     <string name="title_activity_score">ScoreActivity</string>
     <string name="hello_round">Hello Round World!</string>
     <string name="hello_square">Hello Square World!</string>

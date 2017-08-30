@@ -30,7 +30,7 @@ public class ScoreActivity extends AppCompatActivity {
         scoreTxt.setText("Your score : " + intermediateScore);
         scoreTxt.setText("Your score : " + advancedScore);
 
-        SharedPreferences sharedPreferences = getSharedPreferences("Scores", MODE_PRIVATE);
+        final SharedPreferences sharedPreferences = getSharedPreferences("Scores", MODE_PRIVATE);
         final int beginnerHighScore = sharedPreferences.getInt("beginner HighScore", 0);
 
         final int intermediateHighScore = sharedPreferences.getInt("intermediate HighScore", 0);
@@ -95,7 +95,6 @@ public class ScoreActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (levelTitle.equalsIgnoreCase(HomeActivity.MATH_BEGINNER)){
-                    SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
                     final int beginnerHighScore = 0;
                     highestScoreTxt.setText("HighScore : " + 0);
                     SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -103,7 +102,6 @@ public class ScoreActivity extends AppCompatActivity {
                     editor.commit();
 
                 }else if (levelTitle.equalsIgnoreCase(HomeActivity.MATH_INTERMEDIATE)){
-                    SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
                     final int intermediateHighScore = 0;
                     highestScoreTxt.setText("HighScore : " + 0);
                     SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -111,7 +109,6 @@ public class ScoreActivity extends AppCompatActivity {
                     editor.commit();
 
                 }else if (levelTitle.equalsIgnoreCase(HomeActivity.MATH_ADVANCED)){
-                    SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
                     final int advancedHighScore = 0;
                     highestScoreTxt.setText("HighScore : " + 0);
                     SharedPreferences.Editor editor = sharedPreferences.edit();

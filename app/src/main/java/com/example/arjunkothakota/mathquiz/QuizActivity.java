@@ -244,8 +244,7 @@ public class QuizActivity extends AppCompatActivity {
         alertDialogBuilder
                 .setMessage("Wrong Answer!, Game Over")
                 .setCancelable(false)
-                .setPositiveButton("Check Score",
-                        new DialogInterface.OnClickListener() {
+                .setPositiveButton("Check Score", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 Intent intent = new Intent(QuizActivity.this, ScoreActivity.class);
@@ -260,8 +259,7 @@ public class QuizActivity extends AppCompatActivity {
                                 startActivity(intent);
                             }
                         })
-                .setNegativeButton("Home",
-                        new DialogInterface.OnClickListener() {
+                .setNegativeButton("Home", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 finish();
