@@ -20,6 +20,8 @@ public class QuizActivity extends AppCompatActivity {
 
     private TextView scoreTextView, questionTextView;
 
+    private LinearLayout bgColor;
+
     private BeginnerQuestions beginnerQuestions = new BeginnerQuestions();
     private IntermediateQuestions intermediateQuestions = new IntermediateQuestions();
     private AdvancedQuestions advancedQuestions = new AdvancedQuestions();
