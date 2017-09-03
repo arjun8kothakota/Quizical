@@ -172,8 +172,9 @@ public class QuizActivity extends AppCompatActivity {
 
         if (levelTitle.equalsIgnoreCase(HomeActivity.MATH_BEGINNER)){
 
-            constraintLayout.setBackgroundColor(Color.parseColor("#58D68D"));
+
             linearLayout.setBackgroundColor(Color.parseColor("#58D68D"));
+            constraintLayout.setBackgroundResource(R.drawable.greenbg);
 
             if (questionNumber < beginnerQuestions.getLength()){
                 questionTextView.setText(beginnerQuestions.getQuestion(questionNumber));
@@ -196,7 +197,7 @@ public class QuizActivity extends AppCompatActivity {
             }
         }else if (levelTitle.equalsIgnoreCase(HomeActivity.MATH_INTERMEDIATE)){
 
-            constraintLayout.setBackgroundColor(Color.parseColor("#3498DB"));
+            constraintLayout.setBackgroundResource(R.drawable.bluebg);
             linearLayout.setBackgroundColor(Color.parseColor("#3498DB"));
 
             if (questionNumber < intermediateQuestions.getLength()){
@@ -217,7 +218,7 @@ public class QuizActivity extends AppCompatActivity {
             }
         }else if (levelTitle.equalsIgnoreCase(HomeActivity.MATH_ADVANCED)){
 
-            constraintLayout.setBackgroundColor(Color.parseColor("#EC7063"));
+            constraintLayout.setBackgroundResource(R.drawable.redbg);
             linearLayout.setBackgroundColor(Color.parseColor("#EC7063"));
 
             if (questionNumber < advancedQuestions.getLength()){
@@ -244,7 +245,7 @@ public class QuizActivity extends AppCompatActivity {
 
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(QuizActivity.this);
         alertDialogBuilder
-                .setMessage("Wrong Answer!, Game Over")
+                .setMessage("Wrong Answer! Game Over")
                 .setCancelable(false)
                 .setPositiveButton("Check Score", new DialogInterface.OnClickListener() {
                             @Override
@@ -259,12 +260,6 @@ public class QuizActivity extends AppCompatActivity {
                                 }
                                 intent.putExtra(HomeActivity.EXTRA_ITEM_TITLE, levelTitle);
                                 startActivity(intent);
-                            }
-                        })
-                .setNegativeButton("Home", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                finish();
                             }
                         });
 
