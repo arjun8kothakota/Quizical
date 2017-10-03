@@ -14,7 +14,9 @@ public class AdvancedQuestions {
             "What is the fifth planet in the solar system?",
             "What is the sixth planet in the solar system?",
             "What is the seventh planet in the solar system?",
-            "What is the eighth planet in the solar system?"
+            "What is the eighth planet in the solar system?",
+            "",
+            ""
     };
 
     private String mChoices[][]={
@@ -26,6 +28,8 @@ public class AdvancedQuestions {
             {"Uranus", "Venus", "Mars", "Saturn"},
             {"Saturn", "Mercury", "Uranus", "Earth"},
             {"Neptune", "Earth", "Mars", "Venus"},
+            {"", "", "", ""},
+            {"", "", "", ""}
     };
 
     public int getLength(){
@@ -33,7 +37,7 @@ public class AdvancedQuestions {
     }
 
     private String mAnswers[]=
-            {"Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"};
+            {"Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune", "", ""};
 
     public String getQuestion(int q){
         String question= mQuestions[q];

@@ -14,6 +14,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Random;
+
 public class QuizActivity extends AppCompatActivity {
 
     private Button answer1Btn, answer2Btn, answer3Btn, answer4Btn;
@@ -30,7 +32,13 @@ public class QuizActivity extends AppCompatActivity {
     private int beginnerScore = 0;
     private int intermediateScore = 0;
     private int advancedScore = 0;
-    private int questionNumber = 0;
+
+
+    private int beginnerQuestionLength = beginnerQuestions.mQuestions.length;
+    private int intermediateQuestionLength = intermediateQuestions.mQuestions.length;
+    private int advancedQuestionLength = advancedQuestions.mQuestions.length;
+
+    Random random = new Random();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,30 +63,17 @@ public class QuizActivity extends AppCompatActivity {
             scoreTextView.setText("Score : "+ advancedScore);
         }
 
-        updateQuestion();
+        updateQuestion(random.nextInt(beginnerQuestionLength));
+        updateQuestion(random.nextInt(intermediateQuestionLength));
+        updateQuestion(random.nextInt(advancedQuestionLength));
 
         answer1Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (answer1Btn.getText() == answer){
-                    if (levelTitle.equalsIgnoreCase(HomeActivity.MATH_BEGINNER)){
-                        beginnerScore += 5;
-                        scoreTextView.setText("Score : " + beginnerScore);
-                        updateQuestion();
-                        Toast.makeText(getApplicationContext(), "You've got the right Answer!", Toast.LENGTH_SHORT).show();
-                     }else if (levelTitle.equalsIgnoreCase(HomeActivity.MATH_INTERMEDIATE)){
-                            intermediateScore += 5;
-                            scoreTextView.setText("Score : " + intermediateScore);
-                            updateQuestion();
-                            Toast.makeText(getApplicationContext(), "You've got the right Answer!", Toast.LENGTH_SHORT).show();
-                    }else if (levelTitle.equalsIgnoreCase(HomeActivity.MATH_ADVANCED)){
-                        advancedScore += 5;
-                        scoreTextView.setText("Score : " + advancedScore);
-                        updateQuestion();
-                        Toast.makeText(getApplicationContext(), "You've got the right Answer!", Toast.LENGTH_SHORT).show();
-                    }
+                   rightAnswer();
                 }else {
-                    gameOver();
+                 wrongAnswer();
                 }
             }
         });
@@ -87,24 +82,9 @@ public class QuizActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (answer2Btn.getText() == answer){
-                    if (levelTitle.equalsIgnoreCase(HomeActivity.MATH_BEGINNER)){
-                        beginnerScore += 5;
-                        scoreTextView.setText("Score : " + beginnerScore);
-                        updateQuestion();
-                        Toast.makeText(getApplicationContext(), "You've got the right Answer!", Toast.LENGTH_SHORT).show();
-                    }else if (levelTitle.equalsIgnoreCase(HomeActivity.MATH_INTERMEDIATE)){
-                        intermediateScore += 5;
-                        scoreTextView.setText("Score : " + intermediateScore);
-                        updateQuestion();
-                        Toast.makeText(getApplicationContext(), "You've got the right Answer!", Toast.LENGTH_SHORT).show();
-                    }else if (levelTitle.equalsIgnoreCase(HomeActivity.MATH_ADVANCED)){
-                        advancedScore += 5;
-                        scoreTextView.setText("Score : " + advancedScore);
-                        updateQuestion();
-                        Toast.makeText(getApplicationContext(), "You've got the right Answer!", Toast.LENGTH_SHORT).show();
-                    }
+                    rightAnswer();
                 }else {
-                    gameOver();
+                    wrongAnswer();
                 }
             }
         });
@@ -113,24 +93,9 @@ public class QuizActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (answer3Btn.getText() == answer){
-                    if (levelTitle.equalsIgnoreCase(HomeActivity.MATH_BEGINNER)){
-                        beginnerScore += 5;
-                        scoreTextView.setText("Score : " + beginnerScore);
-                        updateQuestion();
-                        Toast.makeText(getApplicationContext(), "You've got the right Answer!", Toast.LENGTH_SHORT).show();
-                    }else if (levelTitle.equalsIgnoreCase(HomeActivity.MATH_INTERMEDIATE)){
-                        intermediateScore += 5;
-                        scoreTextView.setText("Score : " + intermediateScore);
-                        updateQuestion();
-                        Toast.makeText(getApplicationContext(), "You've got the right Answer!", Toast.LENGTH_SHORT).show();
-                    }else if (levelTitle.equalsIgnoreCase(HomeActivity.MATH_ADVANCED)){
-                        advancedScore += 5;
-                        scoreTextView.setText("Score : " + advancedScore);
-                        updateQuestion();
-                        Toast.makeText(getApplicationContext(), "You've got the right Answer!", Toast.LENGTH_SHORT).show();
-                    }
+                   rightAnswer();
                 }else {
-                    gameOver();
+                    wrongAnswer();
                 }
             }
         });
@@ -139,30 +104,15 @@ public class QuizActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (answer4Btn.getText() == answer){
-                    if (levelTitle.equalsIgnoreCase(HomeActivity.MATH_BEGINNER)){
-                        beginnerScore += 5;
-                        scoreTextView.setText("Score : " + beginnerScore);
-                        updateQuestion();
-                        Toast.makeText(getApplicationContext(), "You've got the right Answer!", Toast.LENGTH_SHORT).show();
-                    }else if (levelTitle.equalsIgnoreCase(HomeActivity.MATH_INTERMEDIATE)){
-                        intermediateScore += 5;
-                        scoreTextView.setText("Score : " + intermediateScore);
-                        updateQuestion();
-                        Toast.makeText(getApplicationContext(), "You've got the right Answer!", Toast.LENGTH_SHORT).show();
-                    }else if (levelTitle.equalsIgnoreCase(HomeActivity.MATH_ADVANCED)){
-                        advancedScore += 5;
-                        scoreTextView.setText("Score : " + advancedScore);
-                        updateQuestion();
-                        Toast.makeText(getApplicationContext(), "You've got the right Answer!", Toast.LENGTH_SHORT).show();
-                    }
+                    rightAnswer();
                 }else {
-                    gameOver();
+                    wrongAnswer();
                 }
             }
         });
     }
 
-    private void updateQuestion(){
+    private void updateQuestion(int questionNumber){
 
         LinearLayout linearLayout = (LinearLayout) findViewById(R.id.linearLayout);
 
@@ -245,7 +195,7 @@ public class QuizActivity extends AppCompatActivity {
 
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(QuizActivity.this);
         alertDialogBuilder
-                .setMessage("Wrong Answer! Game Over")
+                .setMessage("You have finished!")
                 .setCancelable(false)
                 .setPositiveButton("Check Score", new DialogInterface.OnClickListener() {
                             @Override
@@ -266,4 +216,59 @@ public class QuizActivity extends AppCompatActivity {
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
     }
+
+    public void rightAnswer(){
+
+        answer1Btn = (Button) findViewById(R.id.answer1Btn);
+        answer2Btn = (Button) findViewById(R.id.answer2Btn);
+        answer3Btn = (Button) findViewById(R.id.answer3Btn);
+        answer4Btn = (Button) findViewById(R.id.answer4Btn);
+
+        scoreTextView = (TextView) findViewById(R.id.scoreTextView);
+
+        final String levelTitle = getIntent().getStringExtra(HomeActivity.EXTRA_ITEM_TITLE);
+
+        if (levelTitle.equalsIgnoreCase(HomeActivity.MATH_BEGINNER)){
+            beginnerScore += 5;
+            scoreTextView.setText("Score : " + beginnerScore);
+            updateQuestion(random.nextInt(beginnerQuestionLength));
+            Toast.makeText(getApplicationContext(), "You've got the right Answer!", Toast.LENGTH_SHORT).show();
+        }else if (levelTitle.equalsIgnoreCase(HomeActivity.MATH_INTERMEDIATE)){
+            intermediateScore += 5;
+            scoreTextView.setText("Score : " + intermediateScore);
+            updateQuestion(random.nextInt(intermediateQuestionLength));
+            Toast.makeText(getApplicationContext(), "You've got the right Answer!", Toast.LENGTH_SHORT).show();
+        }else if (levelTitle.equalsIgnoreCase(HomeActivity.MATH_ADVANCED)){
+            advancedScore += 5;
+            scoreTextView.setText("Score : " + advancedScore);
+            updateQuestion(random.nextInt(advancedQuestionLength));
+            Toast.makeText(getApplicationContext(), "You've got the right Answer!", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void wrongAnswer(){
+
+        answer1Btn = (Button) findViewById(R.id.answer1Btn);
+        answer2Btn = (Button) findViewById(R.id.answer2Btn);
+        answer3Btn = (Button) findViewById(R.id.answer3Btn);
+        answer4Btn = (Button) findViewById(R.id.answer4Btn);
+
+        scoreTextView = (TextView) findViewById(R.id.scoreTextView);
+
+        final String levelTitle = getIntent().getStringExtra(HomeActivity.EXTRA_ITEM_TITLE);
+
+        if (levelTitle.equalsIgnoreCase(HomeActivity.MATH_BEGINNER)){
+            scoreTextView.setText("Score : " + beginnerScore);
+            updateQuestion(random.nextInt(beginnerQuestionLength));
+        }else if (levelTitle.equalsIgnoreCase(HomeActivity.MATH_INTERMEDIATE)){
+            scoreTextView.setText("Score : " + intermediateScore);
+            updateQuestion(random.nextInt(intermediateQuestionLength));
+        }else if (levelTitle.equalsIgnoreCase(HomeActivity.MATH_ADVANCED)){
+            scoreTextView.setText("Score : " + advancedScore);
+            updateQuestion(random.nextInt(advancedQuestionLength));
+        }
+        Toast.makeText(getApplicationContext(), "You've got the wrong answer!", Toast.LENGTH_SHORT).show();
+    }
+
 }
+
