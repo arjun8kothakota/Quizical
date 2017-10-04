@@ -127,7 +127,6 @@ public class QuizActivity extends AppCompatActivity {
             constraintLayout.setBackgroundResource(R.drawable.greenbg);
 
             if (num < beginnerQuestions.getLength()+2) {
-
                 questionTextView.setText(beginnerQuestions.getQuestion(questionNumber));
                 answer1Btn.setText(beginnerQuestions.getChoice1(questionNumber));
                 answer2Btn.setText(beginnerQuestions.getChoice2(questionNumber));
@@ -139,10 +138,7 @@ public class QuizActivity extends AppCompatActivity {
                 num++;
 
             }else {
-                Intent intent = new Intent(QuizActivity.this, ScoreActivity.class);
-                intent.putExtra("beginner score", beginnerScore);
-                intent.putExtra(HomeActivity.EXTRA_ITEM_TITLE, levelTitle);
-                startActivity(intent);
+                gameOver();
             }
 
         }else if (levelTitle.equalsIgnoreCase(HomeActivity.MATH_INTERMEDIATE)){
@@ -161,10 +157,7 @@ public class QuizActivity extends AppCompatActivity {
 
                 num++;
             }else{
-                Intent intent = new Intent(QuizActivity.this, ScoreActivity.class);
-                intent.putExtra("intermediate score", intermediateScore);
-                intent.putExtra(HomeActivity.EXTRA_ITEM_TITLE, levelTitle);
-                startActivity(intent);
+                gameOver();
             }
         }else if (levelTitle.equalsIgnoreCase(HomeActivity.MATH_ADVANCED)){
 
@@ -182,10 +175,7 @@ public class QuizActivity extends AppCompatActivity {
 
                 num++;
             }else{
-                Intent intent = new Intent(QuizActivity.this, ScoreActivity.class);
-                intent.putExtra("advanced score", advancedScore);
-                intent.putExtra(HomeActivity.EXTRA_ITEM_TITLE, levelTitle);
-                startActivity(intent);
+                gameOver();
             }
         }
     }
