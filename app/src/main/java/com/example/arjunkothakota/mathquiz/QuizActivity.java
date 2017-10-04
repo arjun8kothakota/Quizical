@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.HashSet;
 import java.util.Random;
 
 public class QuizActivity extends AppCompatActivity {
@@ -29,10 +30,10 @@ public class QuizActivity extends AppCompatActivity {
     private AdvancedQuestions advancedQuestions = new AdvancedQuestions();
 
     private String answer;
+    private int num = 0;
     private int beginnerScore = 0;
     private int intermediateScore = 0;
     private int advancedScore = 0;
-
 
     private int beginnerQuestionLength = beginnerQuestions.mQuestions.length;
     private int intermediateQuestionLength = intermediateQuestions.mQuestions.length;
@@ -62,6 +63,7 @@ public class QuizActivity extends AppCompatActivity {
         }else if (levelTitle.equalsIgnoreCase(HomeActivity.MATH_ADVANCED)){
             scoreTextView.setText("Score : "+ advancedScore);
         }
+
 
         updateQuestion(random.nextInt(beginnerQuestionLength));
         updateQuestion(random.nextInt(intermediateQuestionLength));
@@ -115,9 +117,7 @@ public class QuizActivity extends AppCompatActivity {
     private void updateQuestion(int questionNumber){
 
         LinearLayout linearLayout = (LinearLayout) findViewById(R.id.linearLayout);
-
         ConstraintLayout constraintLayout = (ConstraintLayout) findViewById(R.id.constraintLayout);
-
         String levelTitle = getIntent().getStringExtra(HomeActivity.EXTRA_ITEM_TITLE);
 
         if (levelTitle.equalsIgnoreCase(HomeActivity.MATH_BEGINNER)){
@@ -126,7 +126,8 @@ public class QuizActivity extends AppCompatActivity {
             linearLayout.setBackgroundColor(Color.parseColor("#58D68D"));
             constraintLayout.setBackgroundResource(R.drawable.greenbg);
 
-            if (questionNumber < beginnerQuestions.getLength()){
+            if (num < beginnerQuestions.getLength()+2) {
+
                 questionTextView.setText(beginnerQuestions.getQuestion(questionNumber));
                 answer1Btn.setText(beginnerQuestions.getChoice1(questionNumber));
                 answer2Btn.setText(beginnerQuestions.getChoice2(questionNumber));
@@ -135,22 +136,21 @@ public class QuizActivity extends AppCompatActivity {
 
                 answer = beginnerQuestions.getAnswer(questionNumber);
 
-                questionNumber++;
-
+                num++;
 
             }else {
-
                 Intent intent = new Intent(QuizActivity.this, ScoreActivity.class);
                 intent.putExtra("beginner score", beginnerScore);
                 intent.putExtra(HomeActivity.EXTRA_ITEM_TITLE, levelTitle);
                 startActivity(intent);
             }
+
         }else if (levelTitle.equalsIgnoreCase(HomeActivity.MATH_INTERMEDIATE)){
 
             constraintLayout.setBackgroundResource(R.drawable.bluebg);
             linearLayout.setBackgroundColor(Color.parseColor("#3498DB"));
 
-            if (questionNumber < intermediateQuestions.getLength()){
+            if (num < intermediateQuestions.getLength()+2){
                 questionTextView.setText(intermediateQuestions.getQuestion(questionNumber));
                 answer1Btn.setText(intermediateQuestions.getChoice1(questionNumber));
                 answer2Btn.setText(intermediateQuestions.getChoice2(questionNumber));
@@ -159,7 +159,7 @@ public class QuizActivity extends AppCompatActivity {
 
                 answer = intermediateQuestions.getAnswer(questionNumber);
 
-                questionNumber++;
+                num++;
             }else{
                 Intent intent = new Intent(QuizActivity.this, ScoreActivity.class);
                 intent.putExtra("intermediate score", intermediateScore);
@@ -171,7 +171,7 @@ public class QuizActivity extends AppCompatActivity {
             constraintLayout.setBackgroundResource(R.drawable.redbg);
             linearLayout.setBackgroundColor(Color.parseColor("#EC7063"));
 
-            if (questionNumber < advancedQuestions.getLength()){
+            if (num < advancedQuestions.getLength()+2){
                 questionTextView.setText(advancedQuestions.getQuestion(questionNumber));
                 answer1Btn.setText(advancedQuestions.getChoice1(questionNumber));
                 answer2Btn.setText(advancedQuestions.getChoice2(questionNumber));
@@ -180,7 +180,7 @@ public class QuizActivity extends AppCompatActivity {
 
                 answer = advancedQuestions.getAnswer(questionNumber);
 
-                questionNumber++;
+                num++;
             }else{
                 Intent intent = new Intent(QuizActivity.this, ScoreActivity.class);
                 intent.putExtra("advanced score", advancedScore);
