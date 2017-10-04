@@ -23,8 +23,6 @@ public class QuizActivity extends AppCompatActivity {
 
     private TextView scoreTextView, questionTextView;
 
-    private LinearLayout bgColor;
-
     private BeginnerQuestions beginnerQuestions = new BeginnerQuestions();
     private IntermediateQuestions intermediateQuestions = new IntermediateQuestions();
     private AdvancedQuestions advancedQuestions = new AdvancedQuestions();
@@ -63,7 +61,6 @@ public class QuizActivity extends AppCompatActivity {
         }else if (levelTitle.equalsIgnoreCase(HomeActivity.MATH_ADVANCED)){
             scoreTextView.setText("Score : "+ advancedScore);
         }
-
 
         updateQuestion(random.nextInt(beginnerQuestionLength));
         updateQuestion(random.nextInt(intermediateQuestionLength));
@@ -121,8 +118,6 @@ public class QuizActivity extends AppCompatActivity {
         String levelTitle = getIntent().getStringExtra(HomeActivity.EXTRA_ITEM_TITLE);
 
         if (levelTitle.equalsIgnoreCase(HomeActivity.MATH_BEGINNER)){
-
-
             linearLayout.setBackgroundColor(Color.parseColor("#58D68D"));
             constraintLayout.setBackgroundResource(R.drawable.greenbg);
 
@@ -142,7 +137,6 @@ public class QuizActivity extends AppCompatActivity {
             }
 
         }else if (levelTitle.equalsIgnoreCase(HomeActivity.MATH_INTERMEDIATE)){
-
             constraintLayout.setBackgroundResource(R.drawable.bluebg);
             linearLayout.setBackgroundColor(Color.parseColor("#3498DB"));
 
@@ -160,7 +154,6 @@ public class QuizActivity extends AppCompatActivity {
                 gameOver();
             }
         }else if (levelTitle.equalsIgnoreCase(HomeActivity.MATH_ADVANCED)){
-
             constraintLayout.setBackgroundResource(R.drawable.redbg);
             linearLayout.setBackgroundColor(Color.parseColor("#EC7063"));
 
@@ -208,7 +201,6 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     public void rightAnswer(){
-
         answer1Btn = (Button) findViewById(R.id.answer1Btn);
         answer2Btn = (Button) findViewById(R.id.answer2Btn);
         answer3Btn = (Button) findViewById(R.id.answer3Btn);
@@ -222,22 +214,18 @@ public class QuizActivity extends AppCompatActivity {
             beginnerScore += 5;
             scoreTextView.setText("Score : " + beginnerScore);
             updateQuestion(random.nextInt(beginnerQuestionLength));
-            Toast.makeText(getApplicationContext(), "You've got the right Answer!", Toast.LENGTH_SHORT).show();
         }else if (levelTitle.equalsIgnoreCase(HomeActivity.MATH_INTERMEDIATE)){
             intermediateScore += 5;
             scoreTextView.setText("Score : " + intermediateScore);
             updateQuestion(random.nextInt(intermediateQuestionLength));
-            Toast.makeText(getApplicationContext(), "You've got the right Answer!", Toast.LENGTH_SHORT).show();
         }else if (levelTitle.equalsIgnoreCase(HomeActivity.MATH_ADVANCED)){
             advancedScore += 5;
             scoreTextView.setText("Score : " + advancedScore);
             updateQuestion(random.nextInt(advancedQuestionLength));
-            Toast.makeText(getApplicationContext(), "You've got the right Answer!", Toast.LENGTH_SHORT).show();
         }
     }
 
     public void wrongAnswer(){
-
         answer1Btn = (Button) findViewById(R.id.answer1Btn);
         answer2Btn = (Button) findViewById(R.id.answer2Btn);
         answer3Btn = (Button) findViewById(R.id.answer3Btn);
@@ -259,6 +247,4 @@ public class QuizActivity extends AppCompatActivity {
         }
         Toast.makeText(getApplicationContext(), "You've got the wrong answer!", Toast.LENGTH_SHORT).show();
     }
-
 }
-

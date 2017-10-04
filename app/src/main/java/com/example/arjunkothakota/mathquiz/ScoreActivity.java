@@ -2,13 +2,16 @@ package com.example.arjunkothakota.mathquiz;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class ScoreActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +22,7 @@ public class ScoreActivity extends AppCompatActivity {
         TextView scoreTxt = (TextView) findViewById(R.id.yourScoretextView);
         Button clearBtn = (Button) findViewById(R.id.clearBtn);
         Button goHomeButton = (Button) findViewById(R.id.homeBtn);
+        LinearLayout bg = (LinearLayout) findViewById(R.id.bg);
 
         final Intent intent = getIntent();
         final int beginnerScore = intent.getIntExtra("beginner score", 0);
@@ -38,6 +42,8 @@ public class ScoreActivity extends AppCompatActivity {
         final int advancedHighScore = sharedPreferences.getInt("advanced HighScore", 0);
 
         if (levelTitle.equalsIgnoreCase(HomeActivity.MATH_BEGINNER)){
+
+            bg.setBackgroundResource(R.drawable.beginnerbg);
 
             if (beginnerHighScore >= beginnerScore){
                 highestScoreTxt.setText("High Score : "+beginnerHighScore);
