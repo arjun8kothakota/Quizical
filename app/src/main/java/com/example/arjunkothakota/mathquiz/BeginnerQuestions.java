@@ -16,7 +16,10 @@ public class BeginnerQuestions {
                     "1, 5, 2, 4, 5, 3, 7, 5, 6, 4",
             "Jack won 45 out of 50 matches. What is his loss percentage?",
             "A dice is thrown once. What is the probability that the score is less than three?",
-            "8 is subtracted from a number x and is then multiplied by 9. If the result is 27 which one of the following is the equation?"
+            "8 is subtracted from a number x and is then multiplied by 9. If the result is 27 which one of the following is the equation?",
+            "If a:b = 2:3 and b:c = 4:3, then find a:b:c.",
+            "What integers or numbers should be added to get from -5 to 4?",
+
     };
 
     private String mChoices[][]={
@@ -29,7 +32,9 @@ public class BeginnerQuestions {
             {"7", "6", "8", "4"},
             {"10%", "20%", "30%", "25%"},
             {"1/2", "2/3", "1/3", "4/5"},
-            {"8(x-9)=27", "9(x-8)=27", "x(9-8)=27", "9(8-x)=27"}
+            {"8(x-9)=27", "9(x-8)=27", "x(9-8)=27", "9(8-x)=27"},
+            {"8:12:9", "2:3:8", "2:3:9", "2:3:12"},
+            {"1", "4", "-5", "9"}
     };
 
     public int getLength(){
@@ -37,7 +42,7 @@ public class BeginnerQuestions {
     }
 
     private String mAnswers[]=
-            {"14.29", "5 x 7", "1720", "Metres", "1760 yards", "80%", "6", "10%", "1/3", "9(x-8)=27"};
+            {"14.29", "5 x 7", "1720", "Metres", "1760 yards", "80%", "6", "10%", "1/3", "9(x-8)=27", "8:12:9","9"};
 
     public String getQuestion(int q){
         String question= mQuestions[q];

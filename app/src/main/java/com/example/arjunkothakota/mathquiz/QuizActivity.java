@@ -39,6 +39,7 @@ public class QuizActivity extends AppCompatActivity {
 
     Random random = new Random();
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +49,7 @@ public class QuizActivity extends AppCompatActivity {
         answer2Btn = (Button) findViewById(R.id.answer2Btn);
         answer3Btn = (Button) findViewById(R.id.answer3Btn);
         answer4Btn = (Button) findViewById(R.id.answer4Btn);
+
 
         scoreTextView = (TextView) findViewById(R.id.scoreTextView);
         questionTextView = (TextView) findViewById(R.id.questionsTextView);
